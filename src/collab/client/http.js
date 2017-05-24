@@ -15,8 +15,9 @@ function req(conf) {
         failure(err)
       }
     })
-    req.addEventListener("error", () => { if (!aborted) failure(new Error("Network error")) })
+    // req.addEventListener("error", () => { if (!aborted) failure(new Error("Network error")) })
     if (conf.headers) for (let header in conf.headers) req.setRequestHeader(header, conf.headers[header])
+      // req.setRequestHeader();
     req.send(conf.body || null)
   })
   result.abort = () => {
@@ -41,6 +42,7 @@ function GET(url) {
 exports.GET = GET
 
 function POST(url, body, type) {
-  return req({url: url, method: "POST", body: body, headers: {"Content-Type": type}})
+
+  return req({url: url, method: "POST", body: body, headers: [{"Content-Type": type}]})
 }
 exports.POST = POST

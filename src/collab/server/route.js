@@ -38,8 +38,8 @@ class Router {
     let parsed = parse(request.url, true)
     let path = parsed.pathname
     request.query = parsed.query
-
     return this.routes.some(route => {
+      // console.log(route);
       let match = route.method == request.method && this.match(route.url, path)
       if (!match) return false
 
