@@ -1,0 +1,59 @@
+@media only screen and (min-width: 992px){
+	.intro-header.header-home {
+	    padding: 12vh 0;
+	}
+	.intro-header.header-home .site-heading {
+	    color: #7749a3;
+	}
+	.intro-header.header-home .site-heading .header-subheading {
+	    margin-bottom: 32px;
+        font-size: 32px;
+	    font-weight: 100;
+        color: white;
+	}	
+}
+.intro-header.header-home {
+    padding: 50px 0;
+}
+
+.home .intro-header {
+    margin-bottom: 0;
+}
+.intro-header {
+    background-color: #777;
+    background: no-repeat 50%;
+    background-attachment: scroll;
+    background-size: cover;
+    -o-background-size: cover;
+    margin-bottom: 46px;
+}
+.intro-header .site-heading {
+    text-align: center;
+}
+.intro-header .site-heading {
+    text-align: center;
+}
+.intro-header.header-home .site-heading .btn {
+    margin: 0 18px;
+    text-transform: uppercase;
+    white-space: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: white;
+    padding: 8px 10px 9px;
+    background-color: rgba(0,0,0,0.2);
+    border: 1px solid white;
+    border-width: 1px;
+}
+.site-heading > h1 {
+	font-size: 68px;
+    font-weight: 100;
+    color: white;
+}
+
+.logo-img {
+    height: 35px;
+    background: #fff;
+    padding: 1px;
+    border-radius: 5px;
+}
