@@ -139,7 +139,7 @@ class EditorConnection {
   // Load the document from the server and start up
   // i.e. " + serverAddress +  "/history/docs
   start() {
-    console.log("calling /history/Example");
+    // console.log("calling /history/Example");
     this.run(GET("http://" + serverAddress + "/history/Example")).then(
       data => {
         data = JSON.parse(data);
@@ -178,7 +178,7 @@ class EditorConnection {
 
   // Send the given steps to the server
   send(editState, { steps, comments }) {
-    console.log("Called send");
+    // console.log("Called send");
     let json = JSON.stringify({
       version: getVersion(editState),
       steps: steps ? steps.steps.map(s => s.toJSON()) : [],
@@ -194,7 +194,6 @@ class EditorConnection {
       comments: [],
       commentVersion: 1
     };
-    console.log(JSON.stringify(saveData));
     fetch("http://" + serverAddress + "/history/Example", {
       method: "PUT",
       headers: {
@@ -203,7 +202,7 @@ class EditorConnection {
       //make sure to serialize your JSON body
       body: JSON.stringify(saveData)
     }).then(response => {
-      console.log("Saved the data");
+      // console.log("Saved the data");
       //do something awesome that makes the world a better place
     });
     let tr = steps
@@ -358,24 +357,30 @@ function connectFromHash() {
         console.log("Closed WebSocket");
       };
       econn.conn.onmessage = function(evt) {
-        console.log("Message received");
-        var data = JSON.parse(evt.data);
-        let tr = receiveTransaction(
-          econn.state.edit, // doc json
-          data.steps.map(j => Step.fromJSON(schema, j)),
-          [data.clientID]
-        );
-        tr.setMeta(commentPlugin, {
-          type: "receive",
-          version: data.commentVersion,
-          events: data.comment,
-          sent: 0
-        });
-        econn.dispatch({
-          type: "transaction",
-          transaction: tr,
-          requestDone: true
-        });
+        try {
+          console.log("Message received");
+          var data = JSON.parse(evt.data);
+          let tr = receiveTransaction(
+            econn.state.edit, // doc json
+            data.steps.map(j => Step.fromJSON(schema, j)),
+            [data.clientID]
+          );
+
+          tr.setMeta(commentPlugin, {
+            type: "receive",
+            version: data.commentVersion,
+            events: data.comment,
+            sent: 0
+          });
+          econn.dispatch({
+            type: "transaction",
+            transaction: tr,
+            requestDone: true
+          });
+        } catch (e) {
+          // revert to server version
+          window.connection.dispatch({type: "start"});
+        }
       };
     } else {
       console.log("WebSocket not available");
