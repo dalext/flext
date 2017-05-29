@@ -41,7 +41,7 @@
     font-size: 18px;
     color: white;
     padding: 8px 10px 9px;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgba(0,0,0,0.3);
     border: 1px solid white;
     border-width: 1px;
 }
@@ -56,4 +56,12 @@
     background: #fff;
     padding: 1px;
     border-radius: 5px;
+}
+.header-subheading {
+    background: rgba(0,0,0,0.1);
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 10px;
+    padding: 3px;
+    color: #fff !important;
 }

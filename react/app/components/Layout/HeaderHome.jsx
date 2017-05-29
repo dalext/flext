@@ -13,7 +13,7 @@ class HeaderHome extends React.Component {
 							<div className="site-heading">
 								<h1>Scientific research</h1>
 								<span className="header-subheading">
-									has never been easier
+									Has never been easier
 								</span>
 								<div className="text-center">
 									<a className="btn btn-default btn-info" href="#">
