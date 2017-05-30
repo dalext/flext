@@ -22,7 +22,7 @@ const {
   annotationIcon
 } = require("./comment");
 
-// const serverAddress = "192.168.1.43:5555";
+// const serverAddress = "52.58.76.202:5555";
 const serverAddress = "52.58.76.202:5555";
 
 const report = new Reporter();

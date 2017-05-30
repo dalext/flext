@@ -79,7 +79,3 @@ ReactDOM.render(
     document.getElementById('app')
 );
 
-// Auto close sidebar on route changes
-appHistory.listen(function(ev) {
-    $('body').removeClass('aside-toggled');
-});

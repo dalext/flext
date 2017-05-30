@@ -16,11 +16,12 @@ class HeaderHome extends React.Component {
 									Has never been easier
 								</span>
 								<div className="text-center">
-									<a className="btn btn-default btn-info" href="#">
+									<a className="btn btn-default btn-info" 
+									href="/collab/">
 										Start now
 									</a>
 									<a
-										href="#"
+										href="/collab/"
 										className="btn btn-default btn-info"
 										role="button"
 									>
