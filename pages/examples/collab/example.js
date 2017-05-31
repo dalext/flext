@@ -1,1 +1,1 @@
-require("../../../src/collab/client/collab.js")
+require("../client/collab.js");

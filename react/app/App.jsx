@@ -28,6 +28,8 @@ import SubMenu from './components/SubMenu/SubMenu';
 import './styles/bootstrap.scss';
 import './styles/app.scss'
 
+// Editor
+import Editor from './components/Pages/Editor';
 
 // Pages
 import Login from './components/Pages/Login';
@@ -64,6 +66,7 @@ ReactDOM.render(
         {/*Pages*/}
         <Route path="/" component={BaseHorizontal}>
             <Route path="login" component={Login}/>
+            <Route path="editor" component={Editor}/>
             <Route path="register" component={Register}/>
             <Route path="recover" component={Recover}/>
             <Route path="lock" component={Lock}/>

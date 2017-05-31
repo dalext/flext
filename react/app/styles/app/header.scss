@@ -16,12 +16,16 @@
     padding: 50px 0;
 }
 
+.header-home {
+    display: block;
+}
+
 .home .intro-header {
     margin-bottom: 0;
 }
 .intro-header {
     background-color: #777;
-    background: no-repeat 50%;
+    background: url("/img/bg12.jpg") no-repeat 50%;
     background-attachment: scroll;
     background-size: cover;
     -o-background-size: cover;

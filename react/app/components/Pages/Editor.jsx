@@ -1,3 +1,6 @@
+import React from "react";
+import ContentWrapper from "../Layout/ContentWrapper";
+import { Grid, Row, Col, Panel, Button } from "react-bootstrap";
 const { exampleSetup, buildMenuItems } = require("prosemirror-example-setup");
 const { Step } = require("prosemirror-transform");
 const { EditorState } = require("prosemirror-state");
@@ -12,15 +15,15 @@ const {
 const { MenuItem } = require("prosemirror-menu");
 const crel = require("crel");
 
-const { schema } = require("../client/schema");
-const { GET, POST } = require("../client/http");
-const { Reporter } = require("../client/reporter");
+const { schema } = require("../../client/schema");
+const { GET, POST } = require("../../client/http");
+const { Reporter } = require("../../client/reporter");
 const {
   commentPlugin,
   commentUI,
   addAnnotation,
   annotationIcon
-} = require("../client/comment");
+} = require("../../client/comment");
 
 // const serverAddress = "52.58.76.202:5555";
 const serverAddress = "52.58.76.202:5555";
@@ -30,6 +33,78 @@ const report = new Reporter();
 function badVersion(err) {
   return err.status == 400 && /invalid version/i.test(err);
 }
+
+function repeat(val, n) {
+  let result = [];
+  for (let i = 0; i < n; i++)
+    result.push(val);
+  return result;
+}
+
+const annotationMenuItem = new MenuItem({
+  title: "Add an annotation",
+  run: addAnnotation,
+  select: state => addAnnotation(state),
+  icon: annotationIcon
+});
+let info = {};
+let menu = buildMenuItems(schema);
+class Editor extends React.Component {
+  componentDidMount() {
+    menu.fullMenu[0].push(annotationMenuItem);
+    info = {
+      name: document.querySelector("#docname"),
+      users: document.querySelector("#users")
+    };
+    document.querySelector("#changedoc").addEventListener("click", e => {
+      GET("http://" + serverAddress + "/collab_socket/").then(
+        data => showDocList(e.target, JSON.parse(data)),
+        err => report.failure(err)
+      );
+    });
+    document.addEventListener("click", () => {
+      if (docList) {
+        docList.parentNode.removeChild(docList);
+        docList = null;
+      }
+    });
+    addEventListener("hashchange", connectFromHash);
+    connectFromHash() || (location.hash = "#edit-Example");
+  }
+  componentWillMount() {
+    const prosecode = document.createElement("script");
+    prosecode.src = "prosemirror.js";
+    prosecode.async = true;
+    document.body.appendChild(prosecode);
+    // const examplecode = document.createElement("script");
+    // examplecode.src = "example.js";
+    // examplecode.async = true;
+    // document.body.appendChild(examplecode);
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.type = "text/css";
+    link.href = "/css/editor.css";
+    document.body.appendChild(link);
+  }
+  render() {
+    return (
+      <div className="container">
+        <div className="editorContainer">
+          <div id="editor" />
+          <div className="docinfo">
+            Connected to: <span id="connected">
+              <span id="docname">None</span>
+              <span id="users" />
+              <button type="button" id="changedoc">Change</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Editor;
 
 class State {
   constructor(edit, comm) {
@@ -257,33 +332,6 @@ class EditorConnection {
   }
 }
 
-function repeat(val, n) {
-  let result = [];
-  for (let i = 0; i < n; i++)
-    result.push(val);
-  return result;
-}
-
-const annotationMenuItem = new MenuItem({
-  title: "Add an annotation",
-  run: addAnnotation,
-  select: state => addAnnotation(state),
-  icon: annotationIcon
-});
-let menu = buildMenuItems(schema);
-menu.fullMenu[0].push(annotationMenuItem);
-
-let info = {
-  name: document.querySelector("#docname"),
-  users: document.querySelector("#users")
-};
-document.querySelector("#changedoc").addEventListener("click", e => {
-  GET("http://" + serverAddress + "/collab_socket/").then(
-    data => showDocList(e.target, JSON.parse(data)),
-    err => report.failure(err)
-  );
-});
-
 function userString(n) {
   if (n == null) n = 1;
   return "(" + n + " user" + (n == 1 ? "" : "s") + ")";
@@ -327,19 +375,13 @@ function showDocList(node, list) {
     }
   });
 }
-document.addEventListener("click", () => {
-  if (docList) {
-    docList.parentNode.removeChild(docList);
-    docList = null;
-  }
-});
 
 function newDocument() {
   let name = prompt("Name the new document", "");
   if (name) location.hash = "#edit-" + encodeURIComponent(name);
 }
 
-let connection = null;
+let econn = null;
 
 function connectFromHash() {
   let isID = /^#edit-(.+)/.exec(location.hash);
@@ -379,7 +421,7 @@ function connectFromHash() {
           });
         } catch (e) {
           // revert to server version
-          window.connection.dispatch({type: "start"});
+          window.connection.dispatch({ type: "start" });
         }
       };
     } else {
@@ -387,6 +429,3 @@ function connectFromHash() {
     }
   }
 }
-
-addEventListener("hashchange", connectFromHash);
-connectFromHash() || (location.hash = "#edit-Example");

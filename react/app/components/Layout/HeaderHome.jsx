@@ -3,10 +3,7 @@ import { Col } from "react-bootstrap";
 class HeaderHome extends React.Component {
 	render() {
 		return (
-			<div
-				className="intro-header header-home"
-				style={{ backgroundImage: "url(" + "/img/bg11.jpg" + ")" }}
-			>
+			<div className="intro-header header-home">
 				<div className="container">
 					<div className="row">
 						<div className="col-lg-offset-1 col-md-offset-1 col-md-10">
@@ -16,12 +13,11 @@ class HeaderHome extends React.Component {
 									Has never been easier
 								</span>
 								<div className="text-center">
-									<a className="btn btn-default btn-info" 
-									href="/collab/">
+									<a className="btn btn-default btn-info" href="/editor">
 										Start now
 									</a>
 									<a
-										href="/collab/"
+										href="/editor"
 										className="btn btn-default btn-info"
 										role="button"
 									>
