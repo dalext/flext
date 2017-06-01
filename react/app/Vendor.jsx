@@ -1,4 +1,3 @@
-
 // Modernizr
 import '../bower_components/modernizr/modernizr.custom.js';
 // jQuery
@@ -34,12 +33,10 @@ import '../bower_components/slimScroll/jquery.slimscroll.min.js';
 // Gmap
 import '../bower_components/jQuery-gMap/jquery.gmap.min.js';
 // Vector Maps
-import '../bower_components/jvectormap/jquery-jvectormap.css';
-import '../bower_components/jvectormap/jquery.jvectormap.min.js';
-import '../bower_components/jvectormap/jvectormap.world_mill.js';
-
-// Momentjs (global access for other scripts)
-window.moment = require('moment');
+import '../bower_components/ika.jvectormap/jquery-jvectormap-1.2.2.min.js';
+import '../bower_components/ika.jvectormap/jquery-jvectormap-world-mill-en.js';
+import '../bower_components/ika.jvectormap/jquery-jvectormap-us-mill-en.js';
+import '../bower_components/ika.jvectormap/jquery-jvectormap-1.2.2.css';
 // Datatables
 $.fn.dataTable = require('datatables.net-bs')(window, $);
 require('datatables.net-buttons')(window, $);
@@ -85,9 +82,9 @@ import '../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js';
 // Chosen
 import '../bower_components/chosen_v1.2.0/chosen.jquery.min.js';
 import '../bower_components/chosen_v1.2.0/chosen.min.css';
-// // Bootstrap slider
-// import '../bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js';
-// import '../bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css';
+// Bootstrap slider
+import '../bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js';
+import '../bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css';
 // Bootstrap wysiwig
 import '../bower_components/bootstrap-wysiwyg/bootstrap-wysiwyg.js';
 import '../bower_components/bootstrap-wysiwyg/external/jquery.hotkeys.js';
@@ -113,16 +110,15 @@ window.sortable = require('../bower_components/html.sortable/dist/html.sortable.
 // Nestable
 import '../bower_components/nestable/jquery.nestable.js';
 // Flot Charts
-import '../bower_components/Flot/jquery.flot.js';
+import '../bower_components/flot/jquery.flot.js';
 import '../bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js';
-import '../bower_components/Flot/jquery.flot.resize.js';
-import '../bower_components/Flot/jquery.flot.pie.js';
-import '../bower_components/Flot/jquery.flot.time.js';
-import '../bower_components/Flot/jquery.flot.categories.js';
+import '../bower_components/flot/jquery.flot.resize.js';
+import '../bower_components/flot/jquery.flot.pie.js';
+import '../bower_components/flot/jquery.flot.time.js';
+import '../bower_components/flot/jquery.flot.categories.js';
 import '../bower_components/flot-spline/js/jquery.flot.spline.min.js';
 // ChartJS
-import '../bower_components/d3/d3.min.js';
-window.Chart = require('../bower_components/Chart.js/Chart.js');
+window.Chart = require('../bower_components/chart.js/dist/Chart.js');
 // Rickshaw
 import '../bower_components/rickshaw/rickshaw.min.css';
 window.Rickshaw = require('../bower_components/rickshaw/rickshaw.js');
@@ -140,8 +136,6 @@ import '../bower_components/jquery-knob/js/jquery.knob.js';
 import '../bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.js';
 // Sparkline chart
 import '../bower_components/sparkline/index.js';
-// Classyloader
-import '../bower_components/jquery-classyloader/js/jquery.classyloader.min.js';
 // Blueimp
 import '../bower_components/blueimp-load-image/js/load-image.all.min.js';
 import '../bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.js';

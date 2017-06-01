@@ -106,8 +106,7 @@ class Home extends React.Component {
 								<div
 									data-vector-map=""
 									data-height="450"
-									data-scale="0"
-									data-map-name="world_mill"
+									data-map-name="world_mill_en"
 								/>
 							</div>
 						</Col>

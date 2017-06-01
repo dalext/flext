@@ -2,9 +2,9 @@ var React = require('react');
 import ContentWrapper from '../Layout/ContentWrapper';
 import { Grid, Row, Col, Dropdown, MenuItem } from 'react-bootstrap';
 
-var SubMenu = React.createClass({
+export default class SubMenu extends React.Component {
 
-    render: function() {
+    render() {
         return (
             <ContentWrapper>
                 <h3>Sub Menu
@@ -19,6 +19,4 @@ var SubMenu = React.createClass({
         );
     }
 
-});
-
-module.exports = SubMenu;
+};
