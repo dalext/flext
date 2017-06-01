@@ -17,7 +17,7 @@ import '../bower_components/animate.css/animate.min.css';
 // Simple line icons
 import '../bower_components/simple-line-icons/css/simple-line-icons.css';
 // Localization
-import '../bower_components/jquery-localize-i18n/dist/jquery.localize.js';
+// import '../bower_components/jquery-localize-i18n/dist/jquery.localize.js';
 // Screenfull
 window.screenfull = require('../bower_components/screenfull/dist/screenfull.js');
 // Weather Icons
