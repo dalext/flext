@@ -5,7 +5,7 @@ import ContentWrapper from "./ContentWrapper";
 import Offsidebar from "./Offsidebar";
 import Footer from "./Footer";
 import { Row, Col } from "react-bootstrap";
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 class Base extends React.Component {
     componentWillMount() {
         $("body").addClass("layout-h");
@@ -30,7 +30,7 @@ class Base extends React.Component {
                 {!localStorage.getItem("access_token")
                     ? <HeaderDefault props={this.props} />
                     : <HeaderLoggedIn props={this.props} />}
-                <ReactCSSTransitionGroup
+                <CSSTransitionGroup
                     component="homepage"
                     transitionName={animationName}
                     transitionEnterTimeout={500}
@@ -39,7 +39,7 @@ class Base extends React.Component {
                     {React.cloneElement(this.props.children, {
                         key: Math.random()
                     })}
-                </ReactCSSTransitionGroup>
+                </CSSTransitionGroup>
                 <Footer />
             </div>
         );

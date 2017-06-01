@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 import Header from './Header'
 import Sidebar from './Sidebar'
@@ -32,7 +32,7 @@ class Base extends React.Component {
 
                 <Offsidebar />
 
-                <ReactCSSTransitionGroup
+                <CSSTransitionGroup
                   component="section"
                   transitionName={animationName}
                   transitionEnterTimeout={500}
@@ -41,7 +41,7 @@ class Base extends React.Component {
                   {React.cloneElement(this.props.children, {
                     key: this.props.location.pathname
                   })}
-                </ReactCSSTransitionGroup>
+                </CSSTransitionGroup>
 
                 <Footer />
             </div>

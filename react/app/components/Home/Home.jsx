@@ -11,7 +11,7 @@ import RickHomeChartRun from "./RickHomeChart.run";
 // charts data
 import HomeRun from "./Home.run";
 //transitions
-import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 
 class Home extends React.Component {
 	componentDidMount() {

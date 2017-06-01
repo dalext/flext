@@ -1,6 +1,7 @@
 var webpack = require('webpack');
 var webpackMerge = require('webpack-merge');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var commonConfig = require('./webpack.common.js');
 var path = require('path');
 
@@ -16,14 +17,24 @@ module.exports = webpackMerge(commonConfig, {
     },
 
     plugins: [
-        new webpack.NoErrorsPlugin(),
-        new webpack.optimize.DedupePlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.optimize.UglifyJsPlugin({
+            mangle: {
                 keep_fnames: true,
-                except: ['$super'],
-                mangle: false,
+                except: ['$super']
+            }
         }),
         new ExtractTextPlugin('[name].[hash].css'),
+        new OptimizeCssAssetsPlugin({
+            cssProcessor: require('cssnano'),
+            cssProcessorOptions: {
+                safe: true,
+                discardUnused: false, // no remove @font-face
+                reduceIdents: false, // no change on @keyframes names
+                zindex: false // no change z-index
+            },
+            canPrint: true
+        }),
         new webpack.DefinePlugin({
             'process.env': {
                 NODE_ENV: JSON.stringify('production')

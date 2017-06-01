@@ -76,10 +76,6 @@ class Editor extends React.Component {
     prosecode.src = "prosemirror.js";
     prosecode.async = true;
     document.body.appendChild(prosecode);
-    // const examplecode = document.createElement("script");
-    // examplecode.src = "example.js";
-    // examplecode.async = true;
-    // document.body.appendChild(examplecode);
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.type = "text/css";

@@ -7,17 +7,14 @@ var path = require('path');
 module.exports = webpackMerge(commonConfig, {
     devtool: '#cheap-module-eval-source-map',
 
-    entry: {
-        dev: [
-            'webpack/hot/dev-server',
-        ]
-    },
+    // entry: {
+    //     dev: 'webpack/hot/dev-server'
+    // },
 
     output: {
         path: path.join(process.cwd(), '/dist'),
         publicPath: 'http://localhost:3000/',
-        filename: '[name].js',
-        pathInfo: true
+        filename: '[name].js'
     },
 
     plugins: [
