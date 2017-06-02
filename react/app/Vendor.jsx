@@ -2,10 +2,6 @@
 import '../bower_components/modernizr/modernizr.custom.js';
 // jQuery
 import '../bower_components/jquery/dist/jquery.js';
-// jQuery-Storage-API
-import '../bower_components/jQuery-Storage-API/jquery.storageapi.js';
-// jquery.easing
-import '../bower_components/jquery.easing/js/jquery.easing.js';
 // Whirl
 import '../bower_components/whirl/dist/whirl.css';
 // Animo
@@ -26,10 +22,6 @@ import '../bower_components/fastclick/lib/fastclick.js';
 // jQuery UI
 import '../bower_components/jquery-ui/jquery-ui.js';
 import '../bower_components/jqueryui-touch-punch/jquery.ui.touch-punch.min.js';
-// Slimscroll
-import '../bower_components/slimScroll/jquery.slimscroll.min.js';
-// Gmap
-import '../bower_components/jQuery-gMap/jquery.gmap.min.js';
 // Vector Maps
 import '../bower_components/ika.jvectormap/jquery-jvectormap-1.2.2.min.js';
 import '../bower_components/ika.jvectormap/jquery-jvectormap-world-mill-en.js';
@@ -46,14 +38,7 @@ require('datatables.net-buttons/js/buttons.html5.js')(window, $); // HTML 5 file
 require('datatables.net-buttons/js/buttons.flash.js')(window, $); // Flash file export
 require('datatables.net-buttons/js/buttons.print.js')(window, $); // Print view button
 import '../bower_components/dataTables.fontAwesome/index.css';
-// JQ Grid
-import '../bower_components/jqgrid/css/ui.jqgrid.css';
-import '../bower_components/jqgrid/js/jquery.jqGrid.js';
-import '../bower_components/jqgrid/js/i18n/grid.locale-en.js';
 import '../bower_components/jquery-ui/themes/smoothness/jquery-ui.css';
-// Fileupload
-import '../bower_components/blueimp-file-upload/css/jquery.fileupload.css';
-import '../bower_components/blueimp-file-upload/js/jquery.fileupload.js';
 // Wizard
 import '../bower_components/jquery.steps/build/jquery.steps.js';
 // Validation
@@ -84,8 +69,7 @@ import '../bower_components/chosen_v1.2.0/chosen.min.css';
 // Bootstrap wysiwig
 import '../bower_components/bootstrap-wysiwyg/bootstrap-wysiwyg.js';
 import '../bower_components/bootstrap-wysiwyg/external/jquery.hotkeys.js';
-// Filestyle
-import '../bower_components/bootstrap-filestyle/src/bootstrap-filestyle.js';
+
 // Tags Input
 import '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css';
 import '../bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js';
@@ -98,13 +82,6 @@ window.swal = require('../bower_components/sweetalert/lib/sweetalert.js');
 // CSS Loaders
 import '../bower_components/loaders.css/loaders.css';
 import '../bower_components/spinkit/css/spinkit.css';
-// Bootstrap Tour
-import '../bower_components/bootstrap-tour/build/css/bootstrap-tour-standalone.css';
-// import '../bower_components/bootstrap-tour/build/js/bootstrap-tour-standalone.js';
-// Sortable
-window.sortable = require('../bower_components/html.sortable/dist/html.sortable.js');
-// Nestable
-import '../bower_components/nestable/jquery.nestable.js';
 // Flot Charts
 import '../bower_components/flot/jquery.flot.js';
 import '../bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js';
@@ -132,16 +109,3 @@ import '../bower_components/jquery-knob/js/jquery.knob.js';
 import '../bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.js';
 // Sparkline chart
 import '../bower_components/sparkline/index.js';
-// Blueimp
-import '../bower_components/blueimp-load-image/js/load-image.all.min.js';
-import '../bower_components/blueimp-canvas-to-blob/js/canvas-to-blob.js';
-import '../bower_components/blueimp-tmpl/js/tmpl.js';
-// Fullcalendar
-import '../bower_components/fullcalendar/dist/fullcalendar.min.js';
-import '../bower_components/fullcalendar/dist/fullcalendar.css';
-import '../bower_components/fullcalendar/dist/gcal.js';
-// JQ Cloud
-import '../bower_components/jqcloud2/dist/jqcloud.css';
-import '../bower_components/jqcloud2/dist/jqcloud.js';
-// Flatdocs
-import '../bower_components/flatdoc/flatdoc.js';

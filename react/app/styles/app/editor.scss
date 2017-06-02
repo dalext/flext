@@ -1,13 +1,24 @@
 .editorContainer {
     background-color: #e0e0e0;
-    margin: 50px;
-    padding: 18px;
+    margin: 10px 0;
+    padding: 4px;
+}
+
+@media only screen and (min-width: 992px) {
+	.editorContainer {
+	    padding: 18px;
+	    margin: 50px;
+	}
 }
 
 .ProseMirror {
     background: #f1f1f1;
 }
 
-#changedoc{
+#changedoc {
 	margin: 0 10px;
+}
+
+.editorContainer {
+    background-color: #e0e0e0;
 }
