@@ -38,7 +38,10 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.DefinePlugin({
       "process.env": {
         NODE_ENV: JSON.stringify("production")
-      }
+      },
+      SERVER_ADDR: JSON.stringify("http://52.58.76.202:5555"),
+      SERVER_DOMAIN: JSON.stringify("192.168.1.43"),
+      SERVER_PORT: JSON.stringify("")
     })
   ]
 });

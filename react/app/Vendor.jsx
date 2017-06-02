@@ -16,8 +16,6 @@ import '../bower_components/fontawesome/css/font-awesome.min.css';
 import '../bower_components/animate.css/animate.min.css';
 // Simple line icons
 import '../bower_components/simple-line-icons/css/simple-line-icons.css';
-// Localization
-// import '../bower_components/jquery-localize-i18n/dist/jquery.localize.js';
 // Screenfull
 window.screenfull = require('../bower_components/screenfull/dist/screenfull.js');
 // Weather Icons
@@ -82,9 +80,7 @@ import '../bower_components/jquery.inputmask/dist/jquery.inputmask.bundle.js';
 // Chosen
 import '../bower_components/chosen_v1.2.0/chosen.jquery.min.js';
 import '../bower_components/chosen_v1.2.0/chosen.min.css';
-// Bootstrap slider
-import '../bower_components/seiyria-bootstrap-slider/dist/bootstrap-slider.min.js';
-import '../bower_components/seiyria-bootstrap-slider/dist/css/bootstrap-slider.min.css';
+
 // Bootstrap wysiwig
 import '../bower_components/bootstrap-wysiwyg/bootstrap-wysiwyg.js';
 import '../bower_components/bootstrap-wysiwyg/external/jquery.hotkeys.js';

@@ -2,6 +2,8 @@ import React from "react";
 import { Grid, Row, Col, Panel, Button } from "react-bootstrap";
 import { Router, Route, Link, History } from "react-router";
 
+// const SERVER_DOMAIN = "52.58.76.202";
+
 class Login extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,8 @@ class Login extends React.Component {
   handlePassword(event) {
     this.setState({ password: event.target.value });
   }
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     // set app to loading
     this.setState({ loading: true });
     // construct post data
@@ -29,15 +32,29 @@ class Login extends React.Component {
     formData.append("email", this.state.email);
     formData.append("password", this.state.password);
     // make request
-    fetch("http://52.58.76.202:5555/login", {
+    fetch(SERVER_ADDR + "/login", {
       method: "POST",
       body: formData
     }).then(result => {
       // timeout of 4 seconds for testing purposes
       setTimeout(() => {
         result.text().then(text => {
-          localStorage.setItem("access_token", text);
-          this.props.router.push("/");
+          if (text === "Wrong password") {
+            alert(text);
+          } else if (text === "Email not found") {
+            alert(text);
+          } else {
+            let date = new Date();
+            date.setTime(date.getTime() + 100 * 24 * 60 * 60 * 1000);
+            // set cookie
+            document.cookie = [
+              "science={access_token: " + text + " }",
+              "; expires=" + date.toUTCString(),
+              "; path=/",
+              "; domain=" + SERVER_DOMAIN
+            ].join("");
+            document.location = "http://" + SERVER_DOMAIN + ":" + SERVER_PORT;
+          }
         });
       }, 1e3); // 1 secon
     });

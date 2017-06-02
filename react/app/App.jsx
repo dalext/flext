@@ -14,11 +14,8 @@ import ReactDOM from 'react-dom';
 import { Router, Route, Link, hashHistory, useRouterHistory, IndexRoute } from 'react-router';
 import { createHistory } from 'history';
 
-import initTranslation from './components/Common/localize';
 import Home from './components/Home/Home';
 
-// import Base from './components/Layout/Base';
-// import BasePage from './components/Layout/BasePage';
 import BaseHorizontal from './components/Layout/BaseHorizontal';
 
 import SingleView from './components/SingleView/SingleView';
@@ -40,8 +37,6 @@ import NotFound from './components/Pages/NotFound';
 import Error500 from './components/Pages/Error500';
 import Maintenance from './components/Pages/Maintenance';
 
-// Init translation system
-initTranslation();
 // Init css loader (for themes)
 // initLoadThemes();
 

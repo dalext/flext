@@ -6,6 +6,12 @@ import Offsidebar from "./Offsidebar";
 import Footer from "./Footer";
 import { Row, Col } from "react-bootstrap";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
+import Cookies from "universal-cookie";
+
+// const serverDomain = "52.58.76.202";
+
+const cookies = new Cookies();
+
 class Base extends React.Component {
   constructor(props) {
     super(props);
@@ -15,16 +21,8 @@ class Base extends React.Component {
   }
   componentWillMount() {
     $("body").addClass("layout-h");
-
-    if (typeof localStorage === "object") {
-      try {
-        localStorage.getItem("access_token");
-        this.setState({ auth: true });
-      } catch (e) {
-        alert(
-          'Your web browser does not support storing settings locally. In Safari, the most common cause of this is using "Private Browsing Mode". Some settings may not save or some features may not work properly for you.'
-        );
-      }
+    if (cookies.get("science")) {
+      this.setState({ auth: true });
     }
   }
 

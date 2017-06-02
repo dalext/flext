@@ -1,30 +1,35 @@
-var webpack = require('webpack');
-var webpackMerge = require('webpack-merge');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var commonConfig = require('./webpack.common.js');
-var path = require('path');
+var webpack = require("webpack");
+var webpackMerge = require("webpack-merge");
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var commonConfig = require("./webpack.common.js");
+var path = require("path");
 
 module.exports = webpackMerge(commonConfig, {
-    devtool: '#cheap-module-eval-source-map',
+    devtool: "#cheap-module-eval-source-map",
 
     // entry: {
     //     dev: 'webpack/hot/dev-server'
     // },
 
     output: {
-        path: path.join(process.cwd(), '/dist'),
-        publicPath: 'http://localhost:3000/',
-        filename: '[name].js'
+        path: path.join(process.cwd(), "/dist"),
+        publicPath: "http://localhost:3000/",
+        filename: "[name].js"
     },
 
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('[name].css')
+        new ExtractTextPlugin("[name].css"),
+        new webpack.DefinePlugin({
+            SERVER_ADDR: JSON.stringify("http://52.58.76.202:5555"),
+            SERVER_DOMAIN: JSON.stringify("localhost"),
+            SERVER_PORT: JSON.stringify(3000)
+        })
     ],
 
     devServer: {
         historyApiFallback: true,
-        stats: 'minimal',
+        stats: "minimal",
         inline: true,
         hot: true
     }
