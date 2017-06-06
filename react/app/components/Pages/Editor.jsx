@@ -55,12 +55,12 @@ class Editor extends React.Component {
       name: document.querySelector("#docname"),
       users: document.querySelector("#users")
     };
-    document.querySelector("#changedoc").addEventListener("click", e => {
-      GET(SERVER_ADDR + "/collab_socket/").then(
-        data => showDocList(e.target, JSON.parse(data)),
-        err => report.failure(err)
-      );
-    });
+    // document.querySelector("#changedoc").addEventListener("click", e => {
+    //   GET(SERVER_ADDR + "/collab_socket/").then(
+    //     data => showDocList(e.target, JSON.parse(data)),
+    //     err => report.failure(err)
+    //   );
+    // });
     document.addEventListener("click", () => {
       if (docList) {
         docList.parentNode.removeChild(docList);
@@ -92,10 +92,9 @@ class Editor extends React.Component {
         <div className="editorContainer">
           <div id="editor" />
           <div className="docinfo">
-            Connected to: <span id="connected">
+            Document id: <span id="connected">
               <span id="docname">None</span>
               <span id="users" />
-              <button type="button" id="changedoc">Change</button>
             </span>
           </div>
         </div>
@@ -385,7 +384,7 @@ function newDocument() {
 }
 
 let econn = null;
-// 
+//
 function connectFromHash() {
   let uri = document.location.href.split("#");
   let isID = uri[uri.length - 1];
