@@ -11,110 +11,114 @@ import RickHomeChartRun from "./RickHomeChart.run";
 // charts data
 import HomeRun from "./Home.run";
 //transitions
-import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
+import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 class Home extends React.Component {
-	componentDidMount() {
-		HomeRun(ReactDom.findDOMNode(this.refs.chartSpline));
-		RickHomeChartRun();
-		$("body").addClass("layout-h");
-	}
+  componentDidMount() {
+    HomeRun(ReactDom.findDOMNode(this.refs.chartSpline));
+    RickHomeChartRun();
+    $("body").addClass("layout-h");
+  }
 
-	componentWillUnmount() {
-		$(this.refs.chartSpline).data("plot").shutdown();
-	}
+  componentWillUnmount() {
+    $(this.refs.chartSpline).data("plot").shutdown();
+  }
 
-	render() {
-		const animationName = "rag-fadeIn";
-		return (
-			<div>
-				<HeaderHome />
-				{/* START widgets box*/}
-				<div className="container">
-					<Row>
-						<Col lg={3} sm={6}>
-							{/* START widget*/}
-							<RickHomeChart
-								identifier="rickshaw1"
-								title="45931"
-								subtitle="PUBLICATIONS"
-							/>
-							{/* END widget*/}
-						</Col>
-						<Col lg={3} sm={6}>
-							{/* START widget*/}
-							<RickHomeChart
-								identifier="rickshaw2"
-								title="NEW USERS"
-								subtitle="DAILY"
-							/>
-							{/* END widget*/}
-						</Col>
-						<Col lg={3} md={6} sm={12}>
-							{/* START widget*/}
-							<RickHomeChart
-								identifier="rickshaw3"
-								title="761"
-								subtitle="NEW TEAMS"
-							/>
-							{/* END widget*/}
-						</Col>
-						<Col lg={3} md={6} sm={12}>
-							{/* START widget*/}
-							<RickHomeChart
-								identifier="rickshaw4"
-								title="3518"
-								subtitle="CONCURRENT USERS"
-							/>
-							{/* END widget*/}
-						</Col>
-					</Row>
-					{/* START chart*/}
-					<Row>
-						<Col lg={12}>
-							{/* START widget*/}
-							<div id="panelChart9" className="panel panel-default">
-								<div className="panel-heading">
-									<div className="panel-title">
-										New publications <em>(hourly)</em>
-									</div>
-								</div>
-								<div className="panel-wrapper">
-									<div className="panel-body">
-										<div
-											ref="chartSpline"
-											className="chart-splinev3 flot-chart"
-										/>
-									</div>
-								</div>
-							</div>
-							{/* END widget*/}
-						</Col>
-					</Row>
-				</div>
-				{/* END widgets box*/}
-				<SubHeaderHome />
-				<div className="container">
-					<Row>
-						<Col lg={12}>
-							<div className="panel panel-default">
-								<div className="panel-heading">
-									<div className="panel-title">
-										Office locations
-									</div>
-								</div>
-								<div
-									data-vector-map=""
-									data-height="450"
-									data-map-name="world_mill_en"
-								/>
-							</div>
-						</Col>
-					</Row>
-				</div>
-			</div>
-		);
-	}
+  render() {
+    const animationName = "rag-fadeIn";
+    return (
+      <div>
+        <HeaderHome />
+        {/* START widgets box*/}
+        <div className="container">
+          <Row>
+            <Col lg={3} sm={6}>
+              {/* START widget*/}
+              <RickHomeChart
+                identifier="rickshaw1"
+                title="45,931"
+                subtitle="PUBLICATIONS"
+                icon="icon-layers"
+              />
+              {/* END widget*/}
+            </Col>
+            <Col lg={3} sm={6}>
+              {/* START widget*/}
+              <RickHomeChart
+                identifier="rickshaw2"
+                title="DOWNLOADS"
+                subtitle="HOURLY"
+                icon="icon-cloud-download"
+              />
+              {/* END widget*/}
+            </Col>
+            <Col lg={3} md={6} sm={12}>
+              {/* START widget*/}
+              <RickHomeChart
+                identifier="rickshaw3"
+                title="761"
+                subtitle="NEW TEAMS"
+                icon="icon-people"
+              />
+              {/* END widget*/}
+            </Col>
+            <Col lg={3} md={6} sm={12}>
+              {/* START widget*/}
+              <RickHomeChart
+                identifier="rickshaw4"
+                title="3,518"
+                subtitle="CONCURRENT USERS"
+                icon="icon-organization"
+              />
+              {/* END widget*/}
+            </Col>
+          </Row>
+          {/* START chart*/}
+          <Row>
+            <Col lg={12}>
+              {/* START widget*/}
+              <div id="panelChart9" className="panel panel-default">
+                <div className="panel-heading">
+                  <div className="panel-title">
+                    New publications <em>(hourly)</em>
+                  </div>
+                </div>
+                <div className="panel-wrapper">
+                  <div className="panel-body">
+                    <div
+                      ref="chartSpline"
+                      className="chart-splinev3 flot-chart"
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* END widget*/}
+            </Col>
+          </Row>
+        </div>
+        {/* END widgets box*/}
+        <SubHeaderHome />
+        <div className="container">
+          <Row>
+            <Col lg={12}>
+              <div className="panel panel-default">
+                <div className="panel-heading">
+                  <div className="panel-title">
+                    Office locations
+                  </div>
+                </div>
+                <div
+                  data-vector-map=""
+                  data-height="450"
+                  data-map-name="world_mill_en"
+                />
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default Home;

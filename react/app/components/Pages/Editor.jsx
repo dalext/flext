@@ -25,8 +25,7 @@ const {
   annotationIcon
 } = require("../../client/comment");
 
-// const serverAddress = "52.58.76.202:5555";
-const serverAddress = "52.58.76.202:5555";
+// const SERVER_ADDR = "52.58.76.202:5555";
 
 const report = new Reporter();
 
@@ -57,7 +56,7 @@ class Editor extends React.Component {
       users: document.querySelector("#users")
     };
     document.querySelector("#changedoc").addEventListener("click", e => {
-      GET("http://" + serverAddress + "/collab_socket/").then(
+      GET(SERVER_ADDR + "/collab_socket/").then(
         data => showDocList(e.target, JSON.parse(data)),
         err => report.failure(err)
       );
@@ -68,10 +67,15 @@ class Editor extends React.Component {
         docList = null;
       }
     });
-    addEventListener("hashchange", connectFromHash);
-    connectFromHash() || (location.hash = "#edit-Example");
+    // addEventListener("hashchange", connectFromHash);
+    connectFromHash() ||
+      (location.hash = window.connection.editorHash || "#Example");
+  }
+  componentWillUnMount() {
+    // delete(window.connection);
   }
   componentWillMount() {
+    // console.log("WILL MOUNT");
     const prosecode = document.createElement("script");
     prosecode.src = "prosemirror.js";
     prosecode.async = true;
@@ -208,10 +212,14 @@ class EditorConnection {
   }
 
   // Load the document from the server and start up
-  // i.e. " + serverAddress +  "/history/docs
+  // i.e. " + SERVER_ADDR +  "/history/docs
   start() {
-    // console.log("calling /history/Example");
-    this.run(GET("http://" + serverAddress + "/history/Example")).then(
+    console.log(document.location.href);
+    let uri = document.location.href.split("#");
+    // let exampleHash = "editor#edit-Example";
+    // Load the example document
+    this.editorHash = uri[uri.length - 1];
+    this.run(GET(SERVER_ADDR + "/history/" + this.editorHash)).then(
       data => {
         data = JSON.parse(data);
         this.report.success();
@@ -265,7 +273,7 @@ class EditorConnection {
       comments: [],
       commentVersion: 1
     };
-    fetch("http://" + serverAddress + "/history/Example", {
+    fetch(SERVER_ADDR + "/history/" + this.editorHash, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json"
@@ -336,7 +344,6 @@ function userString(n) {
 let docList;
 function showDocList(node, list) {
   if (docList) docList.parentNode.removeChild(docList);
-
   let ul = (docList = document.body.appendChild(
     crel("ul", { class: "doclist" })
   ));
@@ -374,19 +381,21 @@ function showDocList(node, list) {
 
 function newDocument() {
   let name = prompt("Name the new document", "");
-  if (name) location.hash = "#edit-" + encodeURIComponent(name);
+  if (name) location.hash = encodeURIComponent(name);
 }
 
 let econn = null;
-
+// 
 function connectFromHash() {
-  let isID = /^#edit-(.+)/.exec(location.hash);
+  let uri = document.location.href.split("#");
+  let isID = uri[uri.length - 1];
   if (isID) {
-    info.name.textContent = decodeURIComponent(isID[1]);
+    info.name.textContent = decodeURIComponent(isID);
     if (window["WebSocket"]) {
+      // first disconnect
       econn = window.connection = new EditorConnection(
         report,
-        new WebSocket("ws://" + serverAddress + "/collab_socket/" + isID[1])
+        new WebSocket(COLLAB_SOCKET + "/collab_socket/" + isID)
       );
       econn.conn.onopen = function(evt) {
         console.log("Connected to the WebSocket");
@@ -403,7 +412,6 @@ function connectFromHash() {
             data.steps.map(j => Step.fromJSON(schema, j)),
             [data.clientID]
           );
-
           tr.setMeta(commentPlugin, {
             type: "receive",
             version: data.commentVersion,

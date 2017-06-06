@@ -1,10 +1,9 @@
 /* ========================================================================
      Component: sidebar
  ========================================================================== */
+$sidebar-bg:                      $gray-dark;
 
-$sidebar-bg:                      $aside-bg;
-
-$sidebar-item-color:              #515253;
+$sidebar-item-color:              #e1e2e3;
 $sidebar-item-color-active:       $nav-top-bg;
 $sidebar-item-bg-active:          darken($sidebar-bg, 1%);
 
@@ -21,6 +20,12 @@ $submenu-header-hg:               40px;   // Submenu header when hover collapse 
 $sidebar-item-border-wd:          3px;
 $scrollbar-wd:                    17px;
 
+li > a > span {
+  color: #aaa;
+}
+li > a > span:hover {
+  color: $sidebar-item-color-active;
+}
 .sidebar {
   height: 100%;
   padding-bottom: 20px;
