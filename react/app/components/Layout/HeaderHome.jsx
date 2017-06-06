@@ -13,11 +13,11 @@ class HeaderHome extends React.Component {
 									Has never been easier
 								</span>
 								<div className="text-center">
-									<a className="btn btn-default btn-info" href="/editor">
+									<a className="btn btn-default btn-info" href="/editor#Example">
 										Start now
 									</a>
 									<a
-										href="/editor"
+										href="/editor#Example"
 										className="btn btn-default btn-info"
 										role="button"
 									>
