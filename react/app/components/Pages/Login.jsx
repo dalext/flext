@@ -36,27 +36,27 @@ class Login extends React.Component {
       method: "POST",
       body: formData
     }).then(result => {
-      // timeout of 4 seconds for testing purposes
-      setTimeout(() => {
+      if (result.status == 401) {
         result.text().then(text => {
-          if (text === "Wrong password") {
-            alert(text);
-          } else if (text === "Email not found") {
-            alert(text);
-          } else {
-            let date = new Date();
-            date.setTime(date.getTime() + 100 * 24 * 60 * 60 * 1000);
-            // set cookie
-            document.cookie = [
-              "science={access_token: " + text + " }",
-              "; expires=" + date.toUTCString(),
-              "; path=/",
-              "; domain=" + SERVER_DOMAIN
-            ].join("");
-            document.location = "http://" + SERVER_DOMAIN + ":" + SERVER_PORT;
-          }
+          alert(text);
+          this.setState({ loading: false });
         });
-      }, 1e3); // 1 secon
+      } else {
+        result.text().then(text => {
+          let date = new Date();
+          date.setTime(date.getTime() + 100 * 24 * 60 * 60 * 1000);
+          // set cookie
+          document.cookie = [
+            "science={access_token: " + text + " }",
+            "; expires=" + date.toUTCString(),
+            "; path=/",
+            "; domain=" + SERVER_DOMAIN
+          ].join("");
+          // navigate to /dashboard
+          document.location =
+            "http://" + SERVER_DOMAIN + ":" + SERVER_PORT + "/dashboard";
+        });
+      }
     });
   }
   render() {
