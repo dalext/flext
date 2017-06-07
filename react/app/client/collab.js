@@ -379,7 +379,7 @@ function connectFromHash() {
           });
         } catch (e) {
           // revert to server version
-          window.connection.dispatch({type: "start"});
+          window.connection.dispatch({ type: "start" });
         }
       };
     } else {

@@ -63,15 +63,18 @@ const appHistory = useRouterHistory(createHistory)({
 
 ReactDOM.render(
   <Router history={appHistory}>
+
     <Route path="/" component={BaseHorizontal}>
       {/* Default route */}
       <IndexRoute component={Home} />
       <Route path="singleview" component={SingleView} />
     </Route>
+
     {/* Dashboard */}
     <Route path="/" component={BaseSidebar}>
       <Route path="dashboard" component={Dashboard} />
     </Route>
+
     {/* Pages */}
     <Route path="/" component={BaseHorizontal}>
       <Route path="login" component={Login} />
@@ -91,8 +94,7 @@ ReactDOM.render(
   document.getElementById("app")
 );
 
-
 // Auto close sidebar on route changes
 appHistory.listen(function(ev) {
-    $('body').removeClass('aside-toggled');
+  $("body").removeClass("aside-toggled");
 });

@@ -1,22 +1,21 @@
-var React = require('react');
-import ContentWrapper from '../Layout/ContentWrapper';
-import { Grid, Row, Col, Dropdown, MenuItem } from 'react-bootstrap';
+var React = require("react");
+import ContentWrapper from "../Layout/ContentWrapper";
+import { Grid, Row, Col, Dropdown, MenuItem } from "react-bootstrap";
 
 export default class SubMenu extends React.Component {
-
-    render() {
-        return (
-            <ContentWrapper>
-                <h3>Sub Menu
-                   <small>Subtitle</small>
-                </h3>
-                <Row>
-                   <Col lg={12}>
-                      <p>A row with content</p>
-                   </Col>
-                </Row>
-            </ContentWrapper>
-        );
-    }
-
-};
+  render() {
+    return (
+      <ContentWrapper>
+        <h3>
+          Sub Menu
+          <small>Subtitle</small>
+        </h3>
+        <Row>
+          <Col lg={12}>
+            <p>A row with content</p>
+          </Col>
+        </Row>
+      </ContentWrapper>
+    );
+  }
+}

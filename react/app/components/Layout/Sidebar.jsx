@@ -10,8 +10,7 @@ class Sidebar extends React.Component {
     this.state = {
       userBlockCollapse: true,
       collapse: {
-        singleview: this.routeActive(["singleview"]),
-        submenu: this.routeActive(["submenu"])
+        dashboard: this.routeActive(["dashboard"])
       }
     };
   }
@@ -19,6 +18,7 @@ class Sidebar extends React.Component {
   componentDidMount() {
     // pass navigator to access router api
     SidebarRun(this.navigator.bind(this));
+    $("body").removeClass("layout-h");
   }
 
   navigator(route) {
@@ -26,8 +26,7 @@ class Sidebar extends React.Component {
   }
 
   componentWillUnmount() {
-    // React removed me from the DOM, I have to unsubscribe from the pubsub using my token
-    // pubsub.unsubscribe(this.pubsub_token);
+    // $("body").addClass("layout-h");
   }
 
   routeActive(paths) {

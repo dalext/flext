@@ -1,1 +1,1 @@
-console.log(path.resolve(__dirname,  "..", "../css"));
+console.log(path.resolve(__dirname, "..", "../css"));

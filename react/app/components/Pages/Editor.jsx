@@ -55,12 +55,6 @@ class Editor extends React.Component {
       name: document.querySelector("#docname"),
       users: document.querySelector("#users")
     };
-    // document.querySelector("#changedoc").addEventListener("click", e => {
-    //   GET(SERVER_ADDR + "/collab_socket/").then(
-    //     data => showDocList(e.target, JSON.parse(data)),
-    //     err => report.failure(err)
-    //   );
-    // });
     document.addEventListener("click", () => {
       if (docList) {
         docList.parentNode.removeChild(docList);
