@@ -297,38 +297,5 @@ export default function(chartSpline) {
     $(this).ClassyLoader($(this).data());
   });
 
-  $("#newDocModal").on("click", function(e) {
-    e.preventDefault();
-    swal(
-      {
-        title: "New document",
-        text: "Enter document title",
-        type: "input",
-        showCancelButton: true,
-        closeOnConfirm: false,
-        animation: "slide-from-top",
-        inputPlaceholder: "Title..."
-      },
-      function(inputValue) {
-        const cookies = new Cookies();
-        let cookieData = cookies.get("science");
-        if (inputValue === false || inputValue === "") {
-          swal.showInputError("You need to write something!");
-          return false;
-        }
-        // make fetch reques to create new instance
-        var formData = new FormData();
-        formData.append("docHash", btoa(inputValue));
-        fetch(SERVER_ADDR + "/instances/" + cookieData.id, {
-          method: "POST",
-          body: formData
-        }).then(result => {
-          result.json().then(result => {
-            console.log(result);
-          });
-        });
-        swal("Nice!", "Document " + inputValue + " created", "success");
-      }
-    );
-  });
+
 }
