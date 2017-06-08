@@ -12,7 +12,7 @@ class Sidebar extends React.Component {
     this.userBlockClick = this.userBlockClick.bind(this);
     this.renderDocsSidebar = this.renderDocsSidebar.bind(this);
     this.state = {
-      docs: ["Hello", "hello1"],
+      docs: [],
       userBlockCollapse: true,
       collapse: {
         dashboard: this.routeActive(["dashboard"])
