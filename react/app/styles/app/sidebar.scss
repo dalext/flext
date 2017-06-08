@@ -20,12 +20,17 @@ $submenu-header-hg:               40px;   // Submenu header when hover collapse 
 $sidebar-item-border-wd:          3px;
 $scrollbar-wd:                    17px;
 
-li > a > span {
-  color: #aaa;
+
+.sidebar .nav > li > a, .sidebar .nav > li > .nav-item {
+    color: #e0f9ff;
 }
-li > a > span:hover {
-  color: $sidebar-item-color-active;
+
+.sidebar>.nav>li>a:hover, .sidebar>.nav>li>.nav-item:focus, .sidebar>.nav>li>.nav-item:hover {
+    text-decoration: none;
+    outline: none;
+    color: $sidebar-item-color-active;
 }
+
 .sidebar {
   height: 100%;
   padding-bottom: 20px;

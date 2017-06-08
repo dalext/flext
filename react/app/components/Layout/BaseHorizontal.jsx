@@ -6,10 +6,8 @@ import Offsidebar from "./Offsidebar";
 import Footer from "./Footer";
 import { Row, Col } from "react-bootstrap";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
+
 import Cookies from "universal-cookie";
-
-// const serverDomain = "52.58.76.202";
-
 const cookies = new Cookies();
 
 class Base extends React.Component {

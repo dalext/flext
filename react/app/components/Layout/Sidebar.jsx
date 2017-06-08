@@ -3,16 +3,75 @@ import { Router, Route, Link, History, withRouter } from "react-router";
 import { Collapse } from "react-bootstrap";
 import SidebarRun from "./Sidebar.run";
 
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 class Sidebar extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.userBlockClick = this.userBlockClick.bind(this);
+    this.renderDocsSidebar = this.renderDocsSidebar.bind(this);
     this.state = {
+      docs: ["Hello", "hello1"],
       userBlockCollapse: true,
       collapse: {
         dashboard: this.routeActive(["dashboard"])
       }
     };
+  }
+
+  componentWillMount() {
+    // get/decode cookie
+    if (cookies.get("science")) {
+      let cookieData = cookies.get("science");
+      // fetch doc instances for this client
+      fetch(SERVER_ADDR + "/instances/" + cookieData.id, {
+        method: "GET"
+      }).then(result => {
+        result.json().then(result => {
+          if (result.length > 0) {
+            // set list of documents for the sidebar
+            this.setState({
+              docs: result.map(doc => atob(doc))
+            });
+          }
+        });
+      });
+    }
+  }
+
+  renderDocsSidebar() {
+    return (
+      <li className={this.routeActive("singleview") ? "active" : ""}>
+        <div
+          className="nav-item"
+          onClick={this.toggleItemCollapse.bind(this, "instance_list")}
+        >
+
+          <div className="pull-right label label-info">1</div>
+          <em className="icon-grid" />
+          <span data-localize="sidebar.nav.MENU">Your papers</span>
+
+        </div>
+        <Collapse in={this.state.collapse.instance_list} timeout={100}>
+          <ul id="instance_list" className="nav sidebar-subnav">
+            <li className="sidebar-subnav-header">Submenu</li>
+            {this.state.docs.map(doc => (
+              <li
+                key={doc}
+                className={this.routeActive("instance_list") ? "active" : ""}
+              >
+                <Link to="instance_list" title="Submenu">
+                  <span data-localize="sidebar.nav.SUBMENU">
+                    {doc}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Collapse>
+      </li>
+    );
   }
 
   componentDidMount() {
@@ -69,8 +128,8 @@ class Sidebar extends React.Component {
                   <span style={{ color: "white" }}>
                     Profile {"  "}
                     {this.state.userBlockCollapse
-                      ? <span className="icon-arrow-down" />
-                      : <span className="icon-arrow-up" />}
+                      ? <span className="icon-arrow-up" />
+                      : <span className="icon-arrow-down" />}
                   </span>
                 </div>
                 <Collapse id="user-block" in={this.state.userBlockCollapse}>
@@ -113,16 +172,8 @@ class Sidebar extends React.Component {
                   />
                 </span>
               </li>
-
-              <li className={this.routeActive("singleview") ? "active" : ""}>
-                <Link to="singleview" title="Single View">
-                  <em className="icon-grid" />
-                  <span data-localize="sidebar.nav.SINGLEVIEW">
-                    Your Editor Instances
-                  </span>
-                </Link>
-              </li>
-
+              {/* DOCS LIST */}
+              {this.renderDocsSidebar()}
               <li className={this.routeActive(["submenu"]) ? "active" : ""}>
                 <div
                   className="nav-item"

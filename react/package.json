@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --config webpack.dev.js --inline --progress --port 3000 --open",
     "clean": "rimraf dist/",
     "build": "npm run clean && webpack --config webpack.prod.js --progress --profile --bail",
+    "stage": "npm run clean && webpack --config webpack.staging.js --progress --profile --bail",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall-heroku": "bower install && npm run build"
   },

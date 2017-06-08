@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import { Grid, Row, Col, Panel, Button } from "react-bootstrap";
 import { Router, Route, Link, History } from "react-router";
 
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 class Register extends React.Component {
   constructor(props) {
     super(props);
@@ -29,16 +32,21 @@ class Register extends React.Component {
         method: "POST",
         body: formData
       }).then(result => {
-        result.text().then(text => {
-          if (text.length < 50) {
+        result.json().then(result => {
+          if (result.error) {
             // email taken
-            alert(text);
+            alert(result.error);
           } else {
             let date = new Date();
             date.setTime(date.getTime() + 100 * 24 * 60 * 60 * 1000);
             // set cookie
+            let cookieVal = {
+              access_token: result.access_token,
+              id: btoa(this.state.email) // using hashed email as id
+            };
+            // set cookie
             document.cookie = [
-              "science={access_token: " + text + " }",
+              "science=" + JSON.stringify(cookieVal),
               "; expires=" + date.toUTCString(),
               "; path=/",
               "; domain=" + SERVER_DOMAIN

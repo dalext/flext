@@ -2,10 +2,26 @@ import React from "react";
 import ReactDom from "react-dom";
 import ContentWrapper from "../Layout/ContentWrapper";
 import RickHomeChart from "../Home/RickHomeChart";
-import { Grid, Row, Col, Dropdown, MenuItem, Tabs, Tab } from "react-bootstrap";
+import {
+  Grid,
+  Row,
+  Col,
+  Dropdown,
+  MenuItem,
+  Tabs,
+  Tab,
+  Button
+} from "react-bootstrap";
 import DashboardRun from "./Dashboard.run";
 import SubHeaderHome from "../Layout/SubHeaderHome";
+
 class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      docs: []
+    };
+  }
   componentDidMount() {
     DashboardRun(ReactDom.findDOMNode(this.refs.chartSpline));
   }
@@ -17,7 +33,23 @@ class Dashboard extends React.Component {
   render() {
     return (
       <ContentWrapper>
-        <h1 className="text-uppercase">Your stats</h1>
+        <div className="container">
+          <Row>
+            <Col lg={8} sm={8}>
+              <h1 className="text-uppercase">Your stats</h1>
+            </Col>
+            <Col lg={4} sm={4}>
+              <Button
+                id="newDocModal"
+                bsSize="large"
+                bsStyle="success"
+                className="pull-right big-button"
+              >
+                <span className="icon-plus big-plus" />
+              </Button>
+            </Col>
+          </Row>
+        </div>
         {/* START widgets box*/}
         <div className="container">
           <Row>

@@ -3,7 +3,8 @@ import ReactDOM from "react-dom";
 import { Grid, Row, Col, Panel, Button } from "react-bootstrap";
 import { Router, Route, Link, History } from "react-router";
 
-// const SERVER_DOMAIN = "52.58.76.202";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 class Login extends React.Component {
   constructor(props) {
@@ -31,26 +32,28 @@ class Login extends React.Component {
         method: "POST",
         body: formData
       }).then(result => {
-        if (result.status == 401) {
-          result.text().then(text => {
-            alert(text); // wrong password or email not found
-          });
-        } else {
-          result.text().then(text => {
+        result.json().then(result => {
+          if (result.error) {
+            alert(result.error); // wrong password or email not found
+          } else {
             let date = new Date();
             date.setTime(date.getTime() + 100 * 24 * 60 * 60 * 1000);
             // set cookie
+            let cookieVal = {
+              access_token: result.access_token,
+              id: btoa(this.state.email) // using hashed email as id
+            };
+            // set cookie
             document.cookie = [
-              "science={access_token: " + text + " }",
+              "science=" + JSON.stringify(cookieVal),
               "; expires=" + date.toUTCString(),
               "; path=/",
               "; domain=" + SERVER_DOMAIN
             ].join("");
-            // navigate to /dashboard
             document.location =
               "http://" + SERVER_DOMAIN + ":" + SERVER_PORT + "/dashboard";
-          });
-        }
+          }
+        });
       });
     }
   }
