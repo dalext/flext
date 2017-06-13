@@ -73,15 +73,10 @@ class Editor extends React.Component {
     // delete(window.connection);
   }
   componentWillMount() {
-    // console.log("WILL MOUNT");
-    const prosecode = document.createElement("script");
-    prosecode.src = "prosemirror.js";
-    prosecode.async = true;
-    document.body.appendChild(prosecode);
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.type = "text/css";
-    link.href = "/css/editor.css";
+    link.href = SERVER_LOCATION + "/css/editor.css";
     document.body.appendChild(link);
   }
   render() {

@@ -129,16 +129,16 @@ module.exports = {
         context: path.join(__dirname, "app")
       },
       {
-        from: path.resolve(__dirname, "", "..") + "/public/css",
+        from: path.resolve(__dirname, "", "..") + "/editor_css",
         to: "css"
       },
-      {
-        from: path.join(__dirname, "", "..") + "/public/examples/prosemirror.js"
-      },
-      {
-        from: path.join(__dirname, "", "..") +
-          "/public/examples/collab/example.js"
-      }
+      // {
+      //   from: path.join(__dirname, "", "..") + "/public/examples/prosemirror.js"
+      // },
+      // {
+      //   from: path.join(__dirname, "", "..") +
+      //     "/public/examples/collab/example.js"
+      // }
     ]),
     new webpack.ProvidePlugin({
       $: "jquery",
