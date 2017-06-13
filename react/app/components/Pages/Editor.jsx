@@ -12,9 +12,9 @@ const {
   sendableSteps,
   getVersion
 } = require("prosemirror-collab");
+
 const { MenuItem } = require("prosemirror-menu");
 const crel = require("crel");
-
 const { schema } = require("../../client/schema");
 const { GET, POST } = require("../../client/http");
 const { Reporter } = require("../../client/reporter");
@@ -25,7 +25,11 @@ const {
   annotationIcon
 } = require("../../client/comment");
 
-// const SERVER_ADDR = "52.58.76.202:5555";
+import {
+  schema as markdownSchema,
+  defaultMarkdownParser,
+  defaultMarkdownSerializer
+} from "prosemirror-markdown";
 
 const report = new Reporter();
 
@@ -188,6 +192,15 @@ class EditorConnection {
       if (this.view) {
         this.view.updateState(this.state.edit);
       } else {
+        // this.view = window.view = new EditorView(
+        //   document.querySelector("#editor"),
+        //   {
+        //     state: EditorState.create({
+        //       doc: defaultMarkdownParser.parse(content),
+        //       plugins: exampleSetup({ schema })
+        //     })
+        //   }
+        // );
         this.view = window.view = new EditorView(
           document.querySelector("#editor"),
           {
@@ -212,6 +225,23 @@ class EditorConnection {
     // let exampleHash = "editor#edit-Example";
     // Load the example document
     this.editorHash = uri[uri.length - 1];
+    // this.run(GET(SERVER_ADDR + "/history/" + this.editorHash)).then(
+    //   data => {
+    //     // data = JSON.parse(data);
+    //     this.report.success();
+    //     this.backOff = 0;
+    //     this.dispatch({
+    //       type: "loaded",
+    //       doc: defaultMarkdownParser.parse(data),
+    //       version: data.version,
+    //       users: data.users,
+    //       comments: { version: data.commentVersion, comments: data.comments }
+    //     });
+    //   },
+    //   err => {
+    //     this.report.failure(err);
+    //   }
+    // );    
     this.run(GET(SERVER_ADDR + "/history/" + this.editorHash)).then(
       data => {
         data = JSON.parse(data);
@@ -266,6 +296,17 @@ class EditorConnection {
       comments: [],
       commentVersion: 1
     };
+    // fetch(SERVER_ADDR + "/history/" + this.editorHash, {
+    //   method: "PUT",
+    //   headers: {
+    //     "Content-Type": "application/json"
+    //   },
+    //   //make sure to serialize your JSON body
+    //   body: defaultMarkdownSerializer.serialize(this.state.edit.doc)
+    // }).then(response => {
+    //   // console.log("Saved the data");
+    //   //do something awesome that makes the world a better place
+    // });
     fetch(SERVER_ADDR + "/history/" + this.editorHash, {
       method: "PUT",
       headers: {

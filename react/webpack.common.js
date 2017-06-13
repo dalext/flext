@@ -23,7 +23,12 @@ module.exports = {
   },
 
   module: {
-    loaders: [
+    rules: [
+      {
+        enforce: "pre",
+        test: /\.json$/,
+        loader: "json-loader"
+      },
       {
         test: /jquery\.flot\.resize\.js$/,
         use: "imports-loader?this=>window"
@@ -31,11 +36,6 @@ module.exports = {
       {
         test: /\.js/,
         use: "imports-loader?define=>false"
-      },
-      {
-        test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
-        use: "react-hot-loader"
       },
       {
         test: /\.jsx?$/,

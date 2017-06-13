@@ -18,6 +18,9 @@ module.exports = webpackMerge(commonConfig, {
   },
 
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      debug: true
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin("[name].css"),
     new webpack.DefinePlugin({
