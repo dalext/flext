@@ -39,8 +39,7 @@ function badVersion(err) {
 
 function repeat(val, n) {
   let result = [];
-  for (let i = 0; i < n; i++)
-    result.push(val);
+  for (let i = 0; i < n; i++) result.push(val);
   return result;
 }
 
@@ -51,9 +50,40 @@ const annotationMenuItem = new MenuItem({
   icon: annotationIcon
 });
 let info = {};
+
 let menu = buildMenuItems(schema);
+
+menu.fullMenu[0].push(
+  new MenuItem({
+    title: "Math",
+    label: "Math",
+    select(state) {
+      return true; // always
+    },
+    run(state, dispatch) {
+      let tex = window.prompt("Insert block math", "");
+      if (tex) {
+        let newNode = schema.nodes.mathNode.create({ tex: tex });
+        dispatch(state.tr.replaceSelectionWith(newNode));
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      }
+    }
+  })
+);
+
 class Editor extends React.Component {
   componentDidMount() {
+    if (window.MathJax) {
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        displayAlign: "left",
+        tex2jax: {
+          inlineMath: [["$", "$"], ["\\(", "\\)"]],
+          displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+        }
+      });
+    }
     menu.fullMenu[0].push(annotationMenuItem);
     info = {
       name: document.querySelector("#docname"),
@@ -85,7 +115,8 @@ class Editor extends React.Component {
         <div className="editorContainer">
           <div id="editor" />
           <div className="docinfo">
-            Document id: <span id="connected">
+            Document id:{" "}
+            <span id="connected">
               <span id="docname">None</span>
               <span id="users" />
             </span>
@@ -236,7 +267,7 @@ class EditorConnection {
     //   err => {
     //     this.report.failure(err);
     //   }
-    // );    
+    // );
     this.run(GET(SERVER_ADDR + "/history/" + this.editorHash)).then(
       data => {
         data = JSON.parse(data);
