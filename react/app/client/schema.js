@@ -20,7 +20,7 @@ window.setTimeout(() => {
 // Math node schema
 const mathNode = {
   attrs: { id: { default: "" }, tex: { default: "" } },
-  draggable: true,
+  draggable: false,
   toDOM: node => {
     let n = ["span", { id: node.attrs.tex }, "\\[" + node.attrs.tex + "\\]"];
     if (window.MathJax) {
@@ -41,8 +41,8 @@ const mathNode = {
     }
   ],
 
-  inline: true,
-  group: "inline"
+  inline: false,
+  group: "block"
 };
 
 // Math mark schema
