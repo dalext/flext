@@ -65,7 +65,7 @@ menu.fullMenu[0].push(
       if (tex) {
         let newNode = schema.nodes.mathNode.create({ tex: tex });
         dispatch(state.tr.replaceSelectionWith(newNode));
-        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+        // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
       }
     }
   })
@@ -73,17 +73,19 @@ menu.fullMenu[0].push(
 
 class Editor extends React.Component {
   componentDidMount() {
-    if (window.MathJax) {
-      MathJax.Hub.Config({
-        extensions: ["tex2jax.js"],
-        jax: ["input/TeX", "output/HTML-CSS"],
-        displayAlign: "left",
-        tex2jax: {
-          inlineMath: [["$", "$"], ["\\(", "\\)"]],
-          displayMath: [["$$", "$$"], ["\\[", "\\]"]]
-        }
-      });
-    }
+    // if (window.MathJax) {
+    //   MathJax.Hub.Config({
+    //     extensions: ["tex2jax.js"],
+    //     jax: ["input/TeX", "output/HTML-CSS"],
+    //     displayAlign: "left",
+    //     tex2jax: {
+    //       inlineMath: [["$", "$"], ["\\(", "\\)"]],
+    //       displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+    //     }
+    //   });
+    // } else {
+    //   console.log("MathJax not found");
+    // }
     menu.fullMenu[0].push(annotationMenuItem);
     info = {
       name: document.querySelector("#docname"),
@@ -103,11 +105,11 @@ class Editor extends React.Component {
     // delete(window.connection);
   }
   componentWillMount() {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.type = "text/css";
-    link.href = SERVER_LOCATION + "/css/editor.css";
-    document.body.appendChild(link);
+    const cssLink = document.createElement("link");
+    cssLink.rel = "stylesheet";
+    cssLink.type = "text/css";
+    cssLink.href = SERVER_LOCATION + "/css/editor.css";
+    document.body.appendChild(cssLink);
   }
   render() {
     return (
