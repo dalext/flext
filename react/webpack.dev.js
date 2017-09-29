@@ -24,9 +24,9 @@ module.exports = webpackMerge(commonConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin("[name].css"),
     new webpack.DefinePlugin({
-      SERVER_ADDR: JSON.stringify("http://192.168.1.43:5555"),
-      SERVER_LOCATION: JSON.stringify("http://192.168.1.43"),
-      COLLAB_SOCKET: JSON.stringify("ws://192.168.1.43:5555"),
+      SERVER_ADDR: JSON.stringify("http://192.168.1.47:5555"),
+      SERVER_LOCATION: JSON.stringify("http://192.168.1.47"),
+      COLLAB_SOCKET: JSON.stringify("ws://192.168.1.47:5555"),
       SERVER_DOMAIN: JSON.stringify("localhost"),
       SERVER_PORT: JSON.stringify(3000)
     })
