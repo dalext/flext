@@ -39,10 +39,10 @@ module.exports = webpackMerge(commonConfig, {
       "process.env": {
         NODE_ENV: JSON.stringify("production")
       },
-      SERVER_ADDR: JSON.stringify("http://188.166.144.23:5555"),
-      SERVER_LOCATION: JSON.stringify("http://188.166.144.23"),
-      COLLAB_SOCKET: JSON.stringify("ws://188.166.144.23:5555"),
-      SERVER_DOMAIN: JSON.stringify("188.166.144.23"),
+      SERVER_ADDR: JSON.stringify("http://dev.science.cx:5555"),
+      SERVER_LOCATION: JSON.stringify("http://dev.science.cx"),
+      COLLAB_SOCKET: JSON.stringify("ws://dev.science.cx:5555"),
+      SERVER_DOMAIN: JSON.stringify("dev.science.cx"),
       SERVER_PORT: JSON.stringify("")
     })
   ]
