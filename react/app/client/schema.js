@@ -22,8 +22,10 @@ const mathNode = {
   attrs: { id: { default: "" }, tex: { default: "" } },
   draggable: false,
   toDOM: node => {
-    // console.log("toDOM");
+    console.log("toDOM");
     if (window.MathJax) {
+      console.log("Calling MathJax");
+      MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
       MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
     } else {
       console.log("Bug");
@@ -35,9 +37,10 @@ const mathNode = {
       tag: "span",
       getAttrs: dom => {
         // let tex = dom.getAttribute("tex");
-        // console.log("parseDOM");
+        console.log("parseDOM");
         if (window.MathJax) {
           MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+          // MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
         return dom;
       }
