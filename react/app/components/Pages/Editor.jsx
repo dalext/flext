@@ -297,7 +297,7 @@ class EditorConnection {
   // Load the document history at /history/docHash, then connect the WS
   // "users":1,"version":3104,"comments":[],"commentVersion":39}
   poll() {
-    console.log("Called poll");
+    // console.log("Called poll");
   }
 
   sendable(editState) {
@@ -467,7 +467,7 @@ function connectFromHash() {
       };
       econn.conn.onmessage = function(evt) {
         try {
-          console.log("Message received");
+          // console.log("Message received");
           var data = JSON.parse(evt.data);
           let tr = receiveTransaction(
             econn.state.edit, // doc json

@@ -22,17 +22,20 @@ const mathNode = {
   attrs: { id: { default: "" }, tex: { default: "" } },
   draggable: false,
   toDOM: node => {
-    let n = ["span", { id: node.attrs.tex }, "\\[" + node.attrs.tex + "\\]"];
+    // console.log("toDOM");
     if (window.MathJax) {
       MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+    } else {
+      console.log("Bug");
     }
-    return n;
+    return ["span", { id: node.attrs.tex }, "$$" + node.attrs.tex + "$$"];
   },
   parseDOM: [
     {
       tag: "span",
       getAttrs: dom => {
         // let tex = dom.getAttribute("tex");
+        // console.log("parseDOM");
         if (window.MathJax) {
           MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
         }
