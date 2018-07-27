@@ -1,50 +1,21 @@
-# Prosemirror.net
+# DALEXT
 
-These are the sources for http://prosemirror.net
+Online collaborative editor with full mathematics support
 
-This currently contains a [front-page](http://prosemirror.net), the
-[demos](http://prosemirror.net/#demos) (including server-side code to
-support the
-[collaborative demo](http://prosemirror.net/demo/collab.html)), the
-[guides](http://prosemirror.net/docs.html), and the scripts to build
-the [reference docs](http://prosemirror.net/docs/ref/).
+# DEMO
 
-## Installation
+[![Online Collaboration Demo](https://img.youtube.com/vi/9FUNbFSbEus/0.jpg)](https://www.youtube.com/watch?v=9FUNbFSbEus)
 
-Install [Node.js](http://nodejs.org).
+# Installation and deployment
 
-Install the module's dependencies:
++ Install and run the blext back-end
++ Install this software and build tools such as NodeJS locally and build it with webpack
++ Build and deploy it
++ Configure NGINX to serve the static files
 
-```bash
-npm install
-```
+Contributing? Yes
 
-Build the documentation and all the demos' JavaScript source
+Props to [Prosemirror](http://prosemirror.net/) for making the editor
 
-```bash
-make
-```
+LICENSE: MIT
 
-That will populate the `public/` directory with an instance of the
-website. You could point a webserver at it to try it out.
-
-To work on the demos, or to experiment with the collaborative demo, it
-is a good idea to use the dev server:
-
-```
-npm run devserver -- --port 8888
-```
-
-That will get you a server at [localhost:8888](http://localhost:8888/)
-that serves the files in `public/`, along with the collaborative
-editing backend, and updates the demo pages to use
-[moduleserve](https://github.com/marijnh/moduleserve) so that you can
-run the demos directly from the source files, rather than using the
-bundled code. You can now edit them and see the changes with a single
-refresh. (Though the server-side collaborative code still needs a
-server refresh to update.)
-
-Note that this is not secure (it provides filesystem access of HTTP)
-and not fast (the browser will fetch each module individually), and
-should only be used for development, on your local machine, bound to
-`localhost`.
