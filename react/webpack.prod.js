@@ -5,7 +5,9 @@ var OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 var commonConfig = require("./webpack.common.js");
 var path = require("path");
 
-const ENV = (process.env.NODE_ENV = process.env.ENV = "production");
+// const ENV = (process.env.NODE_ENV = process.env.ENV = "production");
+const DOMAIN = process.env.DOMAIN;
+const PORT = process.env.PORT;
 
 module.exports = webpackMerge(commonConfig, {
   // devtool: 'source-map',
@@ -39,11 +41,11 @@ module.exports = webpackMerge(commonConfig, {
       "process.env": {
         NODE_ENV: JSON.stringify("production")
       },
-      SERVER_ADDR: JSON.stringify("http://dev.science.cx:5555"),
-      SERVER_LOCATION: JSON.stringify("http://dev.science.cx"),
-      COLLAB_SOCKET: JSON.stringify("ws://dev.science.cx:5555"),
-      SERVER_DOMAIN: JSON.stringify("dev.science.cx"),
-      SERVER_PORT: JSON.stringify("")
+      SERVER_ADDR: JSON.stringify("http://" + DOMAIN + PORT),
+      SERVER_LOCATION: JSON.stringify("http://" + DOMAIN + PORT),
+      COLLAB_SOCKET: JSON.stringify("ws://" + DOMAIN + PORT),
+      SERVER_DOMAIN: JSON.stringify(DOMAIN),
+      SERVER_PORT: JSON.stringify(PORT)
     })
   ]
 });
