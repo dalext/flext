@@ -1,6 +1,7 @@
 # DALEXT
 
-Online collaborative editor with full mathematics support
+Online collaborative editor with full mathematics support.
+Import/Export to all document types supported by [pandoc](https://pandoc.org/)
 
 # DEMO
 
