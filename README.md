@@ -1,6 +1,6 @@
 # DALEXT
 
-# [http://dalext.work](http://dalex.work)
+# [dalext.work](http://dalext.work)
 
 Online collaborative editor with full mathematics support.
 Import/Export to all document types supported by [pandoc](https://pandoc.org/)
