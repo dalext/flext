@@ -8,6 +8,7 @@ var path = require("path");
 // const ENV = (process.env.NODE_ENV = process.env.ENV = "production");
 const DOMAIN = process.env.DOMAIN;
 const PORT = process.env.PORT;
+const BACKEND_PORT = process.env.BACKEND_PORT;
 
 module.exports = webpackMerge(commonConfig, {
   // devtool: 'source-map',
@@ -41,9 +42,9 @@ module.exports = webpackMerge(commonConfig, {
       "process.env": {
         NODE_ENV: JSON.stringify("production")
       },
-      SERVER_ADDR: JSON.stringify("http://" + DOMAIN + ":" + PORT),
+      SERVER_ADDR: JSON.stringify("http://" + DOMAIN + ":" + BACKEND_PORT),
       SERVER_LOCATION: JSON.stringify("http://" + DOMAIN + ":" + PORT),
-      COLLAB_SOCKET: JSON.stringify("ws://" + DOMAIN + ":" + PORT),
+      COLLAB_SOCKET: JSON.stringify("ws://" + DOMAIN + ":" + BACKEND_PORT),
       SERVER_DOMAIN: JSON.stringify(DOMAIN),
       SERVER_PORT: JSON.stringify(PORT)
     })
