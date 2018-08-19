@@ -30,30 +30,6 @@ class Home extends React.Component {
       <div>
         <HeaderHome />
         {/* START widgets box*/}
-        <div className="container">
-          {/* START chart*/}
-          <Row>
-            <Col lg={12}>
-              {/* START widget*/}
-              <div id="panelChart9" className="panel panel-default">
-                <div className="panel-heading">
-                  <div className="panel-title">
-                    New publications <em>(hourly)</em>
-                  </div>
-                </div>
-                <div className="panel-wrapper">
-                  <div className="panel-body">
-                    <div
-                      ref="chartSpline"
-                      className="chart-splinev3 flot-chart"
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* END widget*/}
-            </Col>
-          </Row>
-        </div>
         {/* END widgets box*/}
         <SubHeaderHome />
       </div>
