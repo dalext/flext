@@ -31,48 +31,6 @@ class Home extends React.Component {
         <HeaderHome />
         {/* START widgets box*/}
         <div className="container">
-          <Row>
-            <Col lg={3} sm={6}>
-              {/* START widget*/}
-              <RickHomeChart
-                identifier="rickshaw1"
-                title="45,931"
-                subtitle="PUBLICATIONS"
-                icon="icon-layers"
-              />
-              {/* END widget*/}
-            </Col>
-            <Col lg={3} sm={6}>
-              {/* START widget*/}
-              <RickHomeChart
-                identifier="rickshaw2"
-                title="DOWNLOADS"
-                subtitle="HOURLY"
-                icon="icon-cloud-download"
-              />
-              {/* END widget*/}
-            </Col>
-            <Col lg={3} md={6} sm={12}>
-              {/* START widget*/}
-              <RickHomeChart
-                identifier="rickshaw3"
-                title="761"
-                subtitle="NEW TEAMS"
-                icon="icon-people"
-              />
-              {/* END widget*/}
-            </Col>
-            <Col lg={3} md={6} sm={12}>
-              {/* START widget*/}
-              <RickHomeChart
-                identifier="rickshaw4"
-                title="3,518"
-                subtitle="CONCURRENT USERS"
-                icon="icon-organization"
-              />
-              {/* END widget*/}
-            </Col>
-          </Row>
           {/* START chart*/}
           <Row>
             <Col lg={12}>
