@@ -11,9 +11,9 @@ class SubHeaderHome extends React.Component {
           <div className="row">
             <div className="col-lg-offset-1 col-md-offset-1 col-md-10">
               <div className="site-heading">
-                <h1>Participation in over 100 countries</h1>
+                <h1>Collaborative editor with mathematics support</h1>
                 <span className="header-subheading">
-                  {" "}The largest scientific research network in the world
+                  {" "}100% open source
                 </span>
               </div>
             </div>
