@@ -98,24 +98,6 @@ class Home extends React.Component {
         </div>
         {/* END widgets box*/}
         <SubHeaderHome />
-        <div className="container">
-          <Row>
-            <Col lg={12}>
-              <div className="panel panel-default">
-                <div className="panel-heading">
-                  <div className="panel-title">
-                    Office locations
-                  </div>
-                </div>
-                <div
-                  data-vector-map=""
-                  data-height="450"
-                  data-map-name="world_mill_en"
-                />
-              </div>
-            </Col>
-          </Row>
-        </div>
       </div>
     );
   }
